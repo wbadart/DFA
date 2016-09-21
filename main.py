@@ -62,7 +62,7 @@ for o, a in opts:
             MACHINE_DEF = a
         else:
             error('No such file, "{}"'.format(a))
-    elif o == 's':
+    elif o == '-s':
         if path.isfile(a):
             TEST_STRS = a
         else:

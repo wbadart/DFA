@@ -29,6 +29,7 @@ class DFA:
             # line 1 is metadata about the machine
             if i == 0:
                 self.name = line
+                print self.name
 
             # the next line is the alphabet, sigma
             elif i == 1:
@@ -52,6 +53,7 @@ class DFA:
                 print 'Rule #{}: {}'.format(len(self.d) + 1, line.rstrip())
                 self.d[(transition[0], transition[1])] = transition[2]
 
+        print
         self.current_state = self.q0
         fs.close()
 
@@ -73,11 +75,12 @@ class DFA:
 
     def run(self, line):
 
+        self.current_state = self.q0
         line = line.rstrip()
-        print 'Machine "{}" processing string "{}"'.format(self.name, line)
-        print ', '.join(self.E)
+        print 'String: ' + line
 
-        for i, char in enumerate(line):
+        step_no = 1
+        for char in line:
 
             # Sanity checks
             if char not in self.E:
@@ -89,8 +92,11 @@ class DFA:
 
             # Follow transition rule
             next_state = self.d[(self.current_state, char)]
-            print 'Step #{}: ({}, {}) -> {}'.format(i + i, self.current_state, char, next_state)
+            print '{}#{}: {},{},{}'.format(step_no,\
+                    self.d.keys().index((self.current_state, char)) + 1,\
+                    self.current_state, char, next_state)
             self.transition(char)
+            step_no += 1
 
         print 'Accepted' if self.current_state in self.F else 'Rejected'
         print
