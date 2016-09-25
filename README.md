@@ -14,17 +14,12 @@ Q:    List;   the set of states in which the machine can be
 q0:   String; initial state
 F:    List;   stores the accepting (final) states
 d:    Dict;   {(String, Character), String} delta maps the tuple (current state, input character) to the next state
-
 current_state: String; the name of the state the machine is currently in. Defaults to q0
 
 None __init___(self, fname:String); constructor takes the name of the file which defines the unit under test
-
 Bool transition(self, char:Character); updates self.current_state according to the input character. Returns False if transition failed
-
 None run(self, line:String); test whether the machine accepts "line," delivers results through stdout
-
 None test(self, fname:String); calls self.run on a list of test strings given in the file called "fname"
-
 None step(self); interactively step though a test string one character at a time
 ```
 
