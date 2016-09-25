@@ -1,5 +1,7 @@
-b
-bab
-baaab
-bbb
-baaabbbbbbbbabbaabbaaab
+a
+baa
+baba
+ababa
+aaabbaaa
+ababaaa
+ababaabaabaaa
